@@ -1,0 +1,38 @@
+<ng-container *ngIf="showPage; else loading">
+  <div class="flex flex-col p-6">
+    <mat-paginator
+      [length]="boostableBossData.boostable_bosses.boostable_boss_list.length"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+      (page)="atualizarDadosTabela($event)"
+    >
+    </mat-paginator>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="grid md:grid-cols-5 auto-rows-auto overflow-y-auto p-3">
+    <mat-card
+      *ngFor="let boss of boostableBossesListData"
+      class="flex flex-col justify-between items-center p-3 m-3"
+    >
+      <img mat-card-image [src]="boss.image_url" class="max-w-xl" />
+      <mat-card-subtitle>{{ boss.name }}</mat-card-subtitle>
+      <mat-card-content>
+        <p *ngIf="boss.featured"></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <div class="flex flex-col h-screen w-screen justify-center items-center p-6">
+    <div class="flex flex-col justify-center items-center w-[300px]">
+      <p class="uppercase">Aguarde! Buscando os Dados...</p>
+      <mat-progress-bar
+        mode="buffer"
+        [value]="progresso"
+        color="#ff0000"
+      ></mat-progress-bar>
+    </div>
+  </div>
+</ng-template>

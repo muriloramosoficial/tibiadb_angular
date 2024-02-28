@@ -11,3 +11,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.mat-progress-bar-buffer {
+  background: #ff0000; /* Cor da área de buffer */
+}

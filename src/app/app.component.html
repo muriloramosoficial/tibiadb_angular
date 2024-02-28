@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 
-<main>
-  <!-- DIV DE CONTEÚDO PRINCIPAL. -->
-  <div class="grid md:grid-cols-5 auto-rows-[200px] p-3">
-    <mat-card
-      *ngFor="let boss of boostableBossesListData"
-      class="flex flex-col justify-between p-3 m-3"
-    >
-      <img mat-card-image [src]="boss.image_url" class="max-w-xl" />
-      <mat-card-subtitle>{{ boss.name }}</mat-card-subtitle>
-    </mat-card>
-    <mat-card> hello </mat-card>
+<main class="flex flex-row h-screen">
+  <div class="flex w-[150px] flex-col bg-black max-h-screen">
+    <a mat-list-item routerLink="/dashboard">Dashboard</a>
+    <a mat-list-item routerLink="/boostableboss">Boostable Bosses</a>
+  </div>
+
+  <div class="flex flex-col w-screen overflow-y-auto">
+    <!-- <div class="flex flex-row justify-between p-6 bg-black text-white">
+      <p>logo</p>
+      <p>menu</p>
+    </div> -->
+    <router-outlet />
   </div>
 </main>
 
-<router-outlet />
-
-<!-- <div class="row">
-  <div class="col-md-4" *ngFor="let boss of boostableBossesListData">
-    <div class="card">
-      <img
-        class="card-img-top"
-        [src]="boss.image_url"
-        alt="{{ boss.name }}"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{ boss.name }}</h5>
-        <mat-slide-toggle>{{ boss.name }}</mat-slide-toggle>
-      </div>
-    </div>
-  </div>
-</div> -->
+<!-- <app-boostableboss></app-boostableboss> -->
