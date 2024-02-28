@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import axios, { Axios } from 'axios';
+import {
+  BBosses,
+  BoostableBossList,
+} from './interfaces/boostaleboss.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  private apiUrl = 'https://jsonplaceholder.typicode.com/users'; // URL da API
+  async getBoostableBoss(): Promise<BBosses> {
+    const urlBoostableBoss = 'https://dev.tibiadata.com/v4/boostablebosses';
+    const response = await axios.get(urlBoostableBoss);
+    return response.data;
+  }
 
-  // método para buscar todos os usuários
-  getUsuarios(): Observable<any> {
-    return this.http.get(this.apiUrl); // usa o método get do HttpClient
+  async getBoostableBossList(): Promise<BoostableBossList> {
+    const urlBoostableBoss = 'https://dev.tibiadata.com/v4/boostablebosses';
+    const response = await axios.get(urlBoostableBoss);
+    return response.data as BoostableBossList;
   }
 }

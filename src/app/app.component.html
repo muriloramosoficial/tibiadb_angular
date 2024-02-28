@@ -1,9 +1,33 @@
 <!DOCTYPE html>
+
 <main>
-  <div>teste</div>
-  <li **ngFor="let item of list">
-    <p>Nome:</p>
-  </li>
+  <!-- DIV DE CONTEÚDO PRINCIPAL. -->
+  <div class="grid md:grid-cols-5 auto-rows-[200px] p-3">
+    <mat-card
+      *ngFor="let boss of boostableBossesListData"
+      class="flex flex-col justify-between p-3 m-3"
+    >
+      <img mat-card-image [src]="boss.image_url" class="max-w-xl" />
+      <mat-card-subtitle>{{ boss.name }}</mat-card-subtitle>
+    </mat-card>
+    <mat-card> hello </mat-card>
+  </div>
 </main>
 
 <router-outlet />
+
+<!-- <div class="row">
+  <div class="col-md-4" *ngFor="let boss of boostableBossesListData">
+    <div class="card">
+      <img
+        class="card-img-top"
+        [src]="boss.image_url"
+        alt="{{ boss.name }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ boss.name }}</h5>
+        <mat-slide-toggle>{{ boss.name }}</mat-slide-toggle>
+      </div>
+    </div>
+  </div>
+</div> -->
